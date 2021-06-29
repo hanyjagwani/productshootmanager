@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<style>
+body {
+  background-color: honeydew;
+}</style><p><b><span style="font-size: 24px;">Welcome, Host</span></b></p>
+<a href="/hostlogout/" class= "btn btn-info">Logout</a>
+<p style="text-align:right"><b><span style="font-size: 18px;"><a href="/register">Register New Client</span></a></b></p>
+<hr>
+</b></span></p>
+<table id="customers">
+  <tr>
+    <th>Client Name</th>
+    <th>Client ID</th>
+    <th>Contact No.</th>
+  </tr>
+  {% for c in client%}
+  <tr>
+    <td><a href="{% url 'client' c.user.id %}">{{c.user.username}}</a></td>
+    <td>{{c.user.id}}</td>
+    <td>{{c.contact}}</td>
+  </tr>
+  {% endfor %}
+
+</table>
+<br>
+<br>
+<hr>
+<br>
+<table id="customers">
+<h3>Orders placed</h3>
+  <tr>
+    <th>Client Name</th>
+    <th>Client ID</th>
+    <th>order placed (product_id:[qty,description])</th>
+  </tr>
+  {% for o in o %}
+  <tr>
+    <td>{{o.user.username}}</a></td>
+    <td>{{o.user.id}}</td>
+    <td>{{o.items_json}}</td>
+  </tr>
+  {% endfor %}
+
+</table>
+</body>
+</html>
